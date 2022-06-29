@@ -15,22 +15,12 @@ public enum AgeGrade {
     AgeGrade(String description) {
         this.description = description;
     }
-
-    public static AgeGrade getGrade(Integer age) {
-        if (isChildren(age)) {
-            return CHILDREN;
-        }
-        if (isYouth(age)) {
-            return YOUTH;
-        }
-        return GENERAL;
-    }
-
-    private static boolean isChildren(Integer age) {
+    
+    public static boolean isChildren(Integer age) {
         return CHILDREN_MIN_AGE <= age && age <= CHILDREN_MAX_AGE;
     }
 
-    private static boolean isYouth(Integer age) {
+    public static boolean isYouth(Integer age) {
         return YOUTH_MIN_AGE <= age && age <= YOUTH_MAX_AGE;
     }
 }

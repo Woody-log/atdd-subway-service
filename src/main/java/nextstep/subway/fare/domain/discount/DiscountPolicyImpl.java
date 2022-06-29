@@ -1,5 +1,6 @@
 package nextstep.subway.fare.domain.discount;
 
+import nextstep.subway.auth.domain.LoginMember;
 import nextstep.subway.member.domain.AgeGrade;
 import org.springframework.stereotype.Component;
 
@@ -11,11 +12,11 @@ public class DiscountPolicyImpl implements DiscountPolicy {
     private static final long DEDUCTIBLE_AMOUNT = 350;
 
     @Override
-    public long calculateDiscountFare(AgeGrade ageGrade, long fare) {
-        if (ageGrade == AgeGrade.YOUTH) {
+    public long calculateDiscountFare(LoginMember loginMember, long fare) {
+        if (AgeGrade.isYouth(loginMember.getAge())) {
             return (long) ((fare - DEDUCTIBLE_AMOUNT) * YOUTH_DISCOUNT_RATE);
         }
-        if (ageGrade == AgeGrade.CHILDREN) {
+        if (AgeGrade.isChildren(loginMember.getAge())) {
             return (long) ((fare - DEDUCTIBLE_AMOUNT) * CHILDREN_DISCOUNT_RATE);
         }
 

@@ -1,8 +1,8 @@
 package nextstep.subway.fare.domain.discount;
 
-import nextstep.subway.member.domain.AgeGrade;
+import nextstep.subway.auth.domain.LoginMember;
 
 public interface DiscountPolicy {
 
-    long calculateDiscountFare(AgeGrade ageGrade, long fare);
+    long calculateDiscountFare(LoginMember loginMember, long fare);
 }

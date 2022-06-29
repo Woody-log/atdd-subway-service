@@ -1,8 +1,8 @@
 package nextstep.subway.fare.application;
 
+import nextstep.subway.auth.domain.LoginMember;
 import nextstep.subway.fare.domain.discount.DiscountPolicy;
 import nextstep.subway.fare.domain.fare.OverFarePolicy;
-import nextstep.subway.member.domain.AgeGrade;
 import nextstep.subway.path.domain.ShortestPath;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +17,10 @@ public class FareService {
         this.overFarePolicy = overFarePolicy;
     }
 
-    public long calculateFare(AgeGrade ageGrade, ShortestPath shortestPath) {
+    public long calculateFare(LoginMember loginMember, ShortestPath shortestPath) {
         long overFare = overFarePolicy.calculateOverFare(shortestPath.getSectionEdges(), shortestPath.getDistance());
         long fare = DEFAULT_FARE + overFare;
 
-        return discountPolicy.calculateDiscountFare(ageGrade, fare);
+        return discountPolicy.calculateDiscountFare(loginMember, fare);
     }
 }

@@ -32,7 +32,7 @@ public class PathService {
         PathFinder pathFinder = new DijkstraPathFinder(lineService.findAllLines());
 
         ShortestPath shortestPath = pathFinder.findShortestPath(sourceStation, targetStation);
-        long fare = fareService.calculateFare(loginMember.getAgeGrade(), shortestPath);
+        long fare = fareService.calculateFare(loginMember, shortestPath);
 
         return new PathResponse(shortestPath.getStations(), shortestPath.getDistance(), fare);
     }
