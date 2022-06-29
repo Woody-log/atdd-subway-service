@@ -10,12 +10,13 @@ public enum AgeGrade {
     private static final int YOUTH_MAX_AGE = 18;
     private static final int CHILDREN_MIN_AGE = 6;
     private static final int CHILDREN_MAX_AGE = 12;
+    
     private final String description;
 
     AgeGrade(String description) {
         this.description = description;
     }
-    
+
     public static boolean isChildren(Integer age) {
         return CHILDREN_MIN_AGE <= age && age <= CHILDREN_MAX_AGE;
     }

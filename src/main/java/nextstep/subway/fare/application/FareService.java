@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FareService {
     private static final long DEFAULT_FARE = 1250;
+
     private final DiscountPolicy discountPolicy;
     private final OverFarePolicy overFarePolicy;
 
